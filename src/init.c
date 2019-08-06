@@ -30,14 +30,6 @@ void matrix_graph_destroy(struct matrix_graph* G)
 	free(G);
 }
 /*Inicializa e destroi lista de adjacencia*/
-static struct node* new_node(vertex w, struct node* next)
-{
-	struct node* a = malloc(sizeof(struct node));
-	a->w = w;
-	a->next = next;
-	return a;
-}
-
 struct list_graph* list_graph_init(int V)
 {
 	struct list_graph* G = malloc(sizeof * G);

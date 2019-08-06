@@ -1,4 +1,23 @@
 #include "methods.h"
+/*Metodos para as matrizes de adjacencia*/
+void matrix_graph_insert_arc(struct matrix_graph* G, vertex v, vertex w)
+{
+	if(G->adj[v][w] == 0)
+	{
+		G->adj[v][w] = 1;
+		G->A++;
+	}
+}
+
+void matrix_graph_remove_arc(struct matrix_graph* G, vertex v, vertex w )
+{
+	if(G->adj[v][w] == 1)
+	{
+		G->adj[v][w] = 0;
+		G->A--;
+	}
+}
+
 
 void matrix_graph_show(struct matrix_graph* G)
 {
@@ -12,6 +31,17 @@ void matrix_graph_show(struct matrix_graph* G)
 	}
 }
 
+
+
+/*Metodos para as listas de adjacencias*/
+static struct node* new_node(vertex w, struct node* next)
+{
+	struct node* a = malloc(sizeof(struct node));
+	a->w = w;
+	a->next = next;
+	return a;
+}
+
 void list_graph_show(struct list_graph* G)
 {
 	for(vertex v= 0; v < G->V; v++)
@@ -22,3 +52,5 @@ void list_graph_show(struct list_graph* G)
 		printf("\n");
 	}
 }
+
+
