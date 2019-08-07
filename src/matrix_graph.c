@@ -61,3 +61,45 @@ void graph_show(struct graph* G)
 	}
 }
 
+void  is_sink(struct graph* G)
+{
+    bool flag[G->V];
+    for(vertex v = 0; v < G->V; v++)
+        flag[v] = true;
+
+    for(vertex v = 0; v < G->V; v++)
+    {
+        for(vertex w = 0; w < G->V; w++)
+        {
+            if(G->adj[v][w] == 1)
+                flag[v] = false;
+        }
+    }
+    printf("Sink:");
+    for(vertex v = 0; v < G->V; v++)
+        if(flag[v] == true)
+            printf(" %d", v);
+   printf("\n");
+}
+
+int graph_indeg(struct graph* G, vertex v)
+{
+    int degree = 0;
+    for(vertex w = 0; w < G->V; w++)
+    {
+        if(G->adj[v][w] == 1)
+            degree++;
+    } 
+    return degree;
+}
+
+int graph_oudeg(struct graph* G, vertex v)
+{
+    int degree = 0;
+    for(vertex w = 0; w < G->V; w++)
+    {
+        if(G->adj[w][v] == 1)
+            degree++;
+    }
+    return degree;
+}
