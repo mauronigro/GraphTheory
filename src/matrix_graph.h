@@ -1,5 +1,4 @@
 #include "common.h"
-
 #define vertex int
 
 struct graph
