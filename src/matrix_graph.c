@@ -103,3 +103,19 @@ int graph_oudeg(struct graph* G, vertex v)
     }
     return degree;
 }
+
+void graph_complete_build(struct graph* G)
+{
+    vertex v, w;
+    for(v = 0; v < G->V; v++)
+    {
+        for(w = 0; w < G->V; w++)
+        {
+            if(v != w)
+            {
+              graph_insert_arc(G,v,w);
+              graph_insert_arc(G,w,v); 
+            } 
+        }
+    }
+}

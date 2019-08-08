@@ -1,4 +1,7 @@
 #include "common.h"
+
+#define vertex int
+
 struct node
 {
 	vertex w;
@@ -18,3 +21,7 @@ static struct node* new_node(vertex w, struct node* next);
 void graph_insert_arc(struct graph* G, vertex v, vertex w);
 void graph_remove_arc(struct graph* G, vertex v, vertex w);
 void graph_show(struct graph* G);
+void is_sink(struct graph* G);
+int graph_indeg(struct graph* G, vertex v);
+int graph_oudeg(struct graph* G, vertex v);
+

@@ -1,8 +1,9 @@
-PROG_MATRIX = src/main.c src/matrix_graph.c
-PROG_LIST = src/main.c src/list_graph.c
-OBJ_MATRIX = main_matrix
-OBJ_LIST = main_list
+SRC_MATRIX = src/main_matrix.c src/matrix_graph.c
+SRC_LIST = src/main_list.c src/list_graph.c
+BIN_MATRIX = main_matrix
+BIN_LIST = main_list
+BIN_DIR = bin/
 matrix:
-	gcc -o $(OBJ_MATRIX) $(PROG_MATRIX)
+	gcc -o $(BIN_DIR)$(BIN_MATRIX) $(SRC_MATRIX)
 list:
-	gcc -o $(OBJ_LIST) $(PROG_LIST)
+	gcc -o $(BIN_DIR)$(BIN_LIST) $(SRC_LIST)
