@@ -23,3 +23,5 @@ void is_sink(struct graph* G);
 int graph_indeg(struct graph* G, vertex v);
 int graph_outdeg(struct graph* G, vertex v);
 void graph_complete_build(struct graph* G);
+struct graph* graph_random(int V, int A);
+vertex rand_vertex(struct graph* G); 

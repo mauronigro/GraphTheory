@@ -2,12 +2,12 @@
 
 int main()
 {
-    struct graph* G = graph_init(5);
-    graph_insert_arc(G, 0, 1);
-    graph_insert_arc(G, 0, 2);
-    graph_insert_arc(G, 0, 3);
-    int degree = graph_indeg(G, 0);
-    printf("%d\n", degree);
+    struct graph* G = graph_init(3);
+    graph_show(G);
+    ugraph_insert_edge(G,0,1);
+    graph_show(G);
+    ugraph_remove_edge(G,0,1);
+    graph_show(G);
     graph_destroy(G);
 }
 

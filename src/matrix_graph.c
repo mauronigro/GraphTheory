@@ -48,6 +48,17 @@ void graph_remove_arc(struct graph* G, vertex v, vertex w )
 	}
 }
 
+void ugraph_insert_edge(struct graph* G, vertex v, vertex w)
+{
+    graph_insert_arc(G,v,w);
+    graph_insert_arc(G,w,v);
+}
+
+void ugraph_remove_edge(struct graph* G, vertex v, w)
+{
+    graph_remove_arc(G,v,w);
+    graph_remove_arc(G,w,v);
+}
 
 void graph_show(struct graph* G)
 {
@@ -82,7 +93,7 @@ void  is_sink(struct graph* G)
    printf("\n");
 }
 
-int graph_indeg(struct graph* G, vertex v)
+int graph_in_degree(struct graph* G, vertex v)
 {
     int degree = 0;
     for(vertex w = 0; w < G->V; w++)
@@ -93,7 +104,7 @@ int graph_indeg(struct graph* G, vertex v)
     return degree;
 }
 
-int graph_oudeg(struct graph* G, vertex v)
+int graph_out_degree(struct graph* G, vertex v)
 {
     int degree = 0;
     for(vertex w = 0; w < G->V; w++)
@@ -102,6 +113,12 @@ int graph_oudeg(struct graph* G, vertex v)
             degree++;
     }
     return degree;
+}
+
+vertex* ugraph_degree(struct graph* G)
+{
+    vertex* degrees = malloc(G->V*sizeof(vertex));    
+    
 }
 
 void graph_complete_build(struct graph* G)
@@ -118,4 +135,37 @@ void graph_complete_build(struct graph* G)
             } 
         }
     }
+}
+
+struct graph* graph_random(int V, int A)
+{
+    struct graph* G = graph_init(V);
+    while(G->A < A)
+    {
+        vertex v = rand_vertex(G);
+        vertex w = rand_vertex(G);
+        if(v != w)
+            graph_insert_arc(G, v, w);
+
+    }
+    return G;
+}
+
+struct graph* graph_dense_random(int V, int A)
+{
+    double prob =(double) A/(V*(V-1));
+    struct graph* G = graph_init(V);
+    for(vertex v = 0; v < G->V; v++)
+        for(vertex w = 0; w < G->V; w++)
+            if(v != w)
+                if(rand () < prob*(RAND_MAX + 1.0))
+                    graph_insert_arc(G,v,w); 
+    return G:
+}
+
+vertex rand_vertex(struct graph* G)
+{
+	double r;
+	r = rand() / (RAND_MAX + 1.0);
+    return r * G->V;
 }
