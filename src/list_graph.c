@@ -1,3 +1,4 @@
+#include "list_graph.h"
 struct graph* graph_init(int V)
 {
 	struct graph* G = malloc(sizeof * G);

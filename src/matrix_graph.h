@@ -16,7 +16,8 @@ void graph_destroy(struct graph* G);
 
 void graph_insert_arc(struct graph* G, vertex v, vertex w);
 void graph_remove_arc(struct graph* G, vertex v, vertex w);
-
+void ugraph_insert_edge(struct graph* G, vertex v, vertex w);
+void ugraph_remove_edge(struct graph* G, vertex v, vertex w);
 
 void graph_show(struct graph* G);
 void is_sink(struct graph* G);
@@ -25,3 +26,5 @@ int graph_outdeg(struct graph* G, vertex v);
 void graph_complete_build(struct graph* G);
 struct graph* graph_random(int V, int A);
 vertex rand_vertex(struct graph* G); 
+bool graph_check_path(struct graph* G, int seq[G->V]);
+

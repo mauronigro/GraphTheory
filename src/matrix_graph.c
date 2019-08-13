@@ -54,7 +54,7 @@ void ugraph_insert_edge(struct graph* G, vertex v, vertex w)
     graph_insert_arc(G,w,v);
 }
 
-void ugraph_remove_edge(struct graph* G, vertex v, w)
+void ugraph_remove_edge(struct graph* G, vertex v, vertex w)
 {
     graph_remove_arc(G,v,w);
     graph_remove_arc(G,w,v);
@@ -160,7 +160,7 @@ struct graph* graph_dense_random(int V, int A)
             if(v != w)
                 if(rand () < prob*(RAND_MAX + 1.0))
                     graph_insert_arc(G,v,w); 
-    return G:
+    return G;
 }
 
 vertex rand_vertex(struct graph* G)
@@ -168,4 +168,16 @@ vertex rand_vertex(struct graph* G)
 	double r;
 	r = rand() / (RAND_MAX + 1.0);
     return r * G->V;
+}
+
+bool graph_check_path(struct graph* G, int seq[G->V])
+{
+    bool flag = false;
+    int i;
+    for(i = 0; i < G->V - 1; i++)
+    {
+        if(G->adj[seq[i]][seq[i+1]] != 1)
+            return false;
+    }
+    return true;
 }
