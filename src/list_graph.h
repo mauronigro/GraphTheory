@@ -22,8 +22,11 @@ void graph_destroy(struct graph* G);
 static struct node* new_node(vertex w, struct node* next);
 void graph_insert_arc(struct graph* G, vertex v, vertex w);
 void graph_remove_arc(struct graph* G, vertex v, vertex w);
+void graph_insert_edge(struct graph* G, vertex v, vertex w);
+void graph_remove_edge(struct graph* G, vertex v , vertex w);
 void graph_show(struct graph* G);
 void is_sink(struct graph* G);
-int graph_indeg(struct graph* G, vertex v);
-int graph_oudeg(struct graph* G, vertex v);
-
+int graph_degree(struct graph* G, vertex v);
+void graph_cycle_outher(struct graph* G);
+void graph_connect(struct graph* G);
+void graph_petersen_gen(struct graph* G, int k);

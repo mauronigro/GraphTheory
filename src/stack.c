@@ -29,7 +29,7 @@ int stack_size(struct stack* p)
 void push(struct stack* p, int key)
 {
 	struct node* novo_no = malloc(sizeof *novo_no);
-	novo_no->dado = chave;
+	novo_no->dado = key;
 	novo_no->anterior = p->topo;
 	p->topo = novo_no;
 	p->qtd++;	
