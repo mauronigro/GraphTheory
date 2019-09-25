@@ -1,11 +1,19 @@
 #include "common.h"
 
 #define vertex int
-
+#define color char
 struct node
 {
 	vertex w;
 	struct node* next;
+    color c;
+};
+
+struct edge
+{
+    struct node* v;
+    struct node* w;
+    color e;
 };
 
 struct graph

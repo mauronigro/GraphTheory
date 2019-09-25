@@ -115,21 +115,27 @@ void graph_connect(struct graph* G)
 
 void graph_petersen_gen(struct graph* G, int k)
 {
-    printf("Gerando Petersen Generalizado G(%d, %d)", G->V/2, k);
-    graph_cycle_outher(G);
-    graph_connect(G);
-    for(int i = 0; i < G->V/2; i++)
+    if(G->V > 2*k)
     {
-        if(G->V/2 + i + k <= G->V-1)
+        printf("Gerando Petersen Generalizado G(%d, %d)\n", G->V/2, k);
+        graph_cycle_outher(G);
+        graph_connect(G);
+        for(int i = 0; i < G->V/2; i++)
         {
-            graph_insert_edge(G, G->V/2 + i, G->V/2 + i + k);
-        }
-        else
-        { 
-           int resto  = (G->V/2 +i + k) % G->V;
-           graph_insert_edge(G, G->V/2 + i, G->V/2 + resto);
-        }
+            if(G->V/2 + i + k <= G->V-1)
+            {
+                graph_insert_edge(G, G->V/2 + i, G->V/2 + i + k);
+            }
+            else
+            { 
+                int resto  = (G->V/2 +i + k) % G->V;
+                graph_insert_edge(G, G->V/2 + i, G->V/2 + resto);
+            }
 
+        }
     }
-    printf("\n");
+    else
+    {
+        printf("Necessario que, n > k, %d > %d  \n", G->V, k);
+    }
 }
